@@ -1,0 +1,10 @@
+1)App creation using create-react-app
+2)bootstrap installed
+3)dependency check from theme package.json and written in this project package.json dn npm install
+4)take index.html and copy paste in app.js
+5)convert class to className
+6)change comments to jsx
+7)in jsx every tag need to be completed so check all tags like img,hr,input and complete it 
+8)change style tags of html to Jsx syntax
+9)
+
