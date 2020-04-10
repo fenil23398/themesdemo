@@ -24,6 +24,10 @@
   color: white;
 }
 
+.button-background {
+  background-color:  rgb(72,109,218) !important;
+  border: none !important;
+}
 .App-link {
   color: #61dafb;
 }

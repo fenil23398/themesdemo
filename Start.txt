@@ -6,5 +6,10 @@
 6)change comments to jsx
 7)in jsx every tag need to be completed so check all tags like img,hr,input and complete it 
 8)change style tags of html to Jsx syntax
-9)
+9)Install scss dependency to run and run main file
+10)Add main scss compiled file in app.js
+11) To preload script tags use helmet
+12) JS wont work inside JSX in side bootstrap
+13) To Update JSx Code collapse 
+https://stackoverflow.com/questions/52248179/how-to-use-data-toggle-collapse-in-reactjs-with-bootstrap 
 
