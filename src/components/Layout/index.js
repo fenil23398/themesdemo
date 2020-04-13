@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import GenerateLineChart from '../LineChart/index';
 export default class Layout extends Component {
     render() {
         return (
@@ -120,7 +120,8 @@ export default class Layout extends Component {
                                 {/* Card Body */}
                                 <div className="card-body">
                                     <div className="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        {/* <canvas id="myAreaChart"></canvas> */}
+                                        <GenerateLineChart />
                                     </div>
                                 </div>
                             </div>

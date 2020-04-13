@@ -11,6 +11,7 @@ import Sidebar from './components/Sidebar/index';
 import Layout from './components/Layout/index';
 import FormIncome from './components/FormIncome/index';
 import NotFound from './components/NotFound/index';
+import GenerateLineChart from './components/LineChart/index';
 
 export default class App extends Component {
   
@@ -38,6 +39,7 @@ export default class App extends Component {
                 {/* End of Topbar */}
                 {/* <Layout /> */}
                 {/* pagwghjsvds d */}
+              
                 <Switch>
                     <Route exact path='/home' component={Layout} />
                     {/* The below Route is to pass Props */}
