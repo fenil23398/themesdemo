@@ -28,9 +28,13 @@ export default class Sidebar extends Component {
         const showComponent = (this.state.menu.components) ? "show" : "" ;
         const showUtilities = (this.state.menu.utilities) ? "show" : "";
         const sidebarView = (this.state.sidebarCollapsed) ? "toggled" : "";
+        const viewHeight = window.outerHeight;
+        console.log("Window height ",window.outerHeight )
         return (
-            <div>
-                <ul className={"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " + sidebarView} id="accordionSidebar">
+            <div >
+                <ul
+                style={{ height: viewHeight }}
+                 className={"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " + sidebarView} id="accordionSidebar">
 
                     {/* Sidebar - Brand */}
                     <NavLink className="sidebar-brand d-flex align-items-center justify-content-center" to="/home">
