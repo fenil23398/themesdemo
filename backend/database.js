@@ -56,7 +56,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         });
         db.run(`CREATE TABLE earnings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp TEXT DEFAULT CURRENT_TIMESTAMP,
+            timestamp TEXT TIMESTAMP,
             earningAmount INTEGER,
             userId INTEGER,
             revenueId INTEGER,
@@ -77,12 +77,12 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             }
             else{
                 //Table just created, creating some rows
-                var insert = 'INSERT INTO earnings (earningAmount, userId, revenueId) VALUES (?,?,?)'
-                db.run(insert, ["100",'1','1'])
-                db.run(insert, ["200",'1','2'])
-                db.run(insert, ["300",'1','3'])
-                db.run(insert, ["400",'4','2'])
-                db.run(insert, ["500",'5','5'])
+                var insert = 'INSERT INTO earnings (timestamp, earningAmount, userId, revenueId) VALUES (?,?,?,?)'
+                db.run(insert, [('2020-01-19 12:00:00'),"100",'1','1'])
+                db.run(insert, [('2020-01-19 12:00:00'),"200",'1','2'])
+                db.run(insert, [('2020-02-19 12:00:00'),"300",'1','3'])
+                db.run(insert, [('2020-02-19 12:00:00'),"400",'2','2'])
+                db.run(insert, [('2020-02-19 12:00:00'),"500",'2','5'])
             }
         });
     }

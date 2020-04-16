@@ -117,9 +117,12 @@ app.post("/postFormData/", (req, res, next) => {
     });
 })
 
-//POST API for add income form - INCOMPLETE
+//POST API for add income form
 app.post('/addIncomeForm/', (req, res, next) => {
     var errors = []
+    if(!req.body.timestamp){
+        errors.push("No Date specified");
+    }
     if(!req.body.userId){
         errors.push("No User Id specified");
     }
@@ -133,13 +136,14 @@ app.post('/addIncomeForm/', (req, res, next) => {
         res.status(400).json({"errors":error.join(",")});
     }
     var data = {
+        timestamp: req.body.timestamp,
         userId : req.body.userId,
         revenueId : req.body.revenueId,
         earningAmount : req.body.earningAmount
     }
-    var sql = "INSERT INTO earnings (earningAmount) SELECT earningAmount FROM earnings JOIN userData ON earnings.userId = userData.userId"
-    // var params = [data.userId, data.earningAmount, data.revenueId]
-    db.run(sql, function(err, result) {
+    var sql = 'INSERT INTO earnings (timestamp, userId, revenueId, earningAmount) VALUES (?,?,?,?)'
+    var params = [data.timestamp, data.userId, data.revenueId, data.earningAmount]
+    db.run(sql, params, function(err, result) {
         if(err) {
             res.status(400).json({"error":err.message})
             return;
@@ -152,16 +156,16 @@ app.post('/addIncomeForm/', (req, res, next) => {
 
 //GET API to return monthwise earnings
 app.get("/getMonthwiseEarnings/:userId", (req, res, next) => {
-    var sql = "SELECT strftime('%m', earnings.timestamp) as month, SUM(earnings.earningAmount) as earningSum FROM earnings CROSS JOIN userData ON earnings.userId = userData.userId WHERE earnings.userId = ? GROUP BY strftime('%m', earnings.timestamp)"
+    var sql = "SELECT strftime('%m', timestamp) AS month, SUM(earningAmount) AS earningSum FROM earnings WHERE userId = ? GROUP BY month"
     var params = [req.params.userId]
-    db.get(sql, params, (err, row) => {
+    db.all(sql, params, (err, rows) => {
         if (err) {
           res.status(400).json({"error":err.message});
           return;
         }
         res.json({
             // "message":"success",
-            "data":row
+            "data":rows
         })
       });
 })
