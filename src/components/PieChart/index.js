@@ -3,7 +3,6 @@ import {
     PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-
 function GeneratePieChart() {
     const data = [
         { name: 'Group A', value: 400 },
@@ -36,5 +35,7 @@ function GeneratePieChart() {
         </ResponsiveContainer>
     )
 }
+
+
 
 export default GeneratePieChart;

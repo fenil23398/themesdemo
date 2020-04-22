@@ -5,7 +5,11 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 import {Helmet} from "react-helmet";
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { ConfigureStore } from './Redux/configureRedux';
+import { connect } from 'react-redux';
+const store=ConfigureStore();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,9 +31,11 @@ ReactDOM.render(
         <script src="./js/demo/chart-area-demo.js"></script>
         <script src="./js/demo/chart-pie-demo.js"></script>
        </Helmet> */}
+       <Provider store={store}>
        <BrowserRouter >
     <App />
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
