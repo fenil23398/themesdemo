@@ -3,6 +3,7 @@ import {
     AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
+
 function GenerateLineChart() {
     const data = [
         {

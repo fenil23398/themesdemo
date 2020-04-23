@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import GenerateLineChart from '../LineChart/index';
 import GeneratePieChart from '../PieChart/index';
-export default class Layout extends Component {
+import { getLineData } from '../../Redux/Actions/LineChart';
+import { connect } from 'react-redux';
+class Layout extends Component {
+    componentDidMount(){
+        this.props.getLineDataaa()
+    }
     render() {
         return (
             <div>
                 {/* Begin Page Content */}
                 <div className="container-fluid">
-
+                {
+                     console.log("From React Router inside Layout ",this.props.linedata)
+                 }
                     {/* Page Heading */}
                     <div className="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -122,7 +129,7 @@ export default class Layout extends Component {
                                 <div className="card-body">
                                     <div className="chart-area">
                                         {/* <canvas id="myAreaChart"></canvas> */}
-                                        <GenerateLineChart />
+                                        <GenerateLineChart/>
                                     </div>
                                 </div>
                             </div>
@@ -148,6 +155,7 @@ export default class Layout extends Component {
                                     </div>
                                 </div>
                                 {/* Card Body */}
+                                
                                 <div className="card-body">
                                     <div className="chart-pie pt-4 pb-2">
                                         {/* <canvas id="myPieChart"></canvas> */}
@@ -299,3 +307,13 @@ export default class Layout extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    console.log("Inside map state to props state Layout ",state.lineData.lineData)
+      return {
+        linedata : state.lineData.lineData
+      }
+  }
+const mapDispatchToProps = {
+    getLineDataaa : getLineData
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Layout);
