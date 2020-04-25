@@ -1,12 +1,52 @@
 import { GET_LINEDATA,ADD_LINEDATA, GET_PIEDATA } from '../ActionTypes';
-
+// import fetch from 'cross-fetch';
 export const addLineData  = (dataObj) => ({
     type : ADD_LINEDATA,
     payload : dataObj
 })
 
-export const getLineData = () => ({
-    type : GET_LINEDATA,
+export function getLineDataa(){
+    console.log("Reached Inside get LInedAta")
+    return dispatch =>{
+        
+    return fetch("https://backendthemesdemo.herokuapp.com/getMonthwiseEarnings/1",{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(data => data.json())
+    .then(res => {
+        console.log("Result received ",res)
+        dispatch({
+            type : GET_LINEDATA,
+            payload : res.data
+        })
+    })
+    .catch(Err => {
+        console.log("Error While Fetching Line Data ",Err)
+    })
+    }
+  }  
+ export const getLineData = () => ({
+        // return dispatch => {
+        //     return fetch("https://backendthemesdemo.herokuapp.com/getMonthwiseEarnings/1")
+        //     .then(data => data.json())
+        // }
+    //  fetch("https://backendthemesdemo.herokuapp.com/getMonthwiseEarnings/1",{
+    //     method : 'GET',
+    //     headers : {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    // .then(data => data.json())
+    // .then(res => {
+    //     console.log("ON api Data Received",res)
+    // })
+    
+        type : GET_LINEDATA,
         payload : [
         {
             name: 'Page A', uv: 4000, pv: 2400, amt: 2400,

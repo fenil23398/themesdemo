@@ -3,7 +3,7 @@ import {
     PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-function GeneratePieChart() {
+function GeneratePieChart(props) {
     const data = [
         { name: 'Group A', value: 400 },
         { name: 'Group B', value: 300 },
@@ -16,14 +16,15 @@ function GeneratePieChart() {
         <ResponsiveContainer>
             <PieChart >
                 <Pie
-                    data={data}
+                    data={props.pieData}
                     //  cx={120}
                     //  cy={200}
                     innerRadius={60}
                     outerRadius={70}
                     fill="#8884d8"
                     paddingAngle={10}
-                    dataKey="value"
+                    // label="revenueType"
+                    dataKey="earningSum"
                 >
                     {
                         data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)

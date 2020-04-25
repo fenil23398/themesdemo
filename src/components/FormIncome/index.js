@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, Button,SplitButton,Dropdown } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
+import { addIncome } from "../../Redux/Actions/IncomeAdd";
+import { connect } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class FormIncome extends Component {
+ class FormIncome extends Component {
     constructor(props){
         super(props);
         this.state={
             startDate: new Date(),
             email:'',
             amount:'',
+            revenueId : 0,
             touched: {
                 startDate: false,
                 email: false,
                 amount: false
             }
         }
+    }
+    
+    componentDidMount(){
+        //this.props.addIncome({})
     }
     handleBlur = (field) => {
         console.log("handleBlur field", field, "event ");
@@ -153,9 +160,9 @@ export default class FormIncome extends Component {
                                             title={"Select Revenue"}
                                             style={{float:'left',backgroundColor : '#36b9cc'}} 
                                         >
-                                            <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-                                            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-                                            <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+                                            <Dropdown.Item eventKey="1">Direct</Dropdown.Item>
+                                            <Dropdown.Item eventKey="2">Referral</Dropdown.Item>
+                                            <Dropdown.Item eventKey="3">Social</Dropdown.Item>
                                            
                                         </SplitButton>{' '}
                                     </Col>
@@ -185,3 +192,8 @@ export default class FormIncome extends Component {
         )
     }
 }
+
+const mapDispatchToProps = {
+    addIncome : addIncome
+ }
+export default connect(null,mapDispatchToProps)(FormIncome);

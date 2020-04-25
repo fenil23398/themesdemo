@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import GenerateLineChart from '../LineChart/index';
 import GeneratePieChart from '../PieChart/index';
-import { getLineData } from '../../Redux/Actions/LineChart';
+import { getLineData,getLineDataa } from '../../Redux/Actions/LineChart';
+import { getPieData } from '../../Redux/Actions/PieChart';
 import { connect } from 'react-redux';
 class Layout extends Component {
     componentDidMount(){
-        this.props.getLineDataaa()
+        this.props.getLineData();
+        this.props.getPieChartData();
     }
     render() {
         return (
@@ -13,7 +15,10 @@ class Layout extends Component {
                 {/* Begin Page Content */}
                 <div className="container-fluid">
                 {
-                     console.log("From React Router inside Layout ",this.props.linedata)
+                     console.log(" Inside Layout LineData",this.props.linedata)
+                 }
+                 {
+                      console.log("Inside Layout PieData ",this.props.pieDataFetched)
                  }
                     {/* Page Heading */}
                     <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -129,7 +134,8 @@ class Layout extends Component {
                                 <div className="card-body">
                                     <div className="chart-area">
                                         {/* <canvas id="myAreaChart"></canvas> */}
-                                        <GenerateLineChart/>
+                                        <GenerateLineChart 
+                                        linedata = {this.props.linedata}/>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +165,7 @@ class Layout extends Component {
                                 <div className="card-body">
                                     <div className="chart-pie pt-4 pb-2">
                                         {/* <canvas id="myPieChart"></canvas> */}
-                                        <GeneratePieChart />
+                                        <GeneratePieChart pieData = {this.props.pieDataFetched}/>
                                     </div>
                                 </div>
                             </div>
@@ -167,13 +173,13 @@ class Layout extends Component {
                     </div>
 
                     {/* Content Row */}
-                    <div className="row">
+                    {/* <div className="row"> */}
 
                         {/* Content Column */}
-                        <div className="col-lg-6 mb-4">
+                        {/* <div className="col-lg-6 mb-4"> */}
 
                             {/* Project Card Example */}
-                            <div className="card shadow mb-4">
+                            {/* <div className="card shadow mb-4">
                                 <div className="card-header py-3">
                                     <h6 className="m-0 font-weight-bold text-primary">Projects</h6>
                                 </div>
@@ -199,10 +205,10 @@ class Layout extends Component {
                                         <div className="progress-bar bg-success" role="progressbar" style={{ "width": "100%" }} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Color System */}
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-lg-6 mb-4">
                                     <div className="card bg-primary text-white shadow">
                                         <div className="card-body">
@@ -269,12 +275,12 @@ class Layout extends Component {
                                 </div>
                             </div>
 
-                        </div>
+                        </div> */}
 
-                        <div className="col-lg-6 mb-4">
+                        {/* <div className="col-lg-6 mb-4"> */}
 
                             {/* Illustrations */}
-                            <div className="card shadow mb-4">
+                            {/* <div className="card shadow mb-4">
                                 <div className="card-header py-3">
                                     <h6 className="m-0 font-weight-bold text-primary">Illustrations</h6>
                                 </div>
@@ -285,10 +291,10 @@ class Layout extends Component {
                                     <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
                                     <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Approach */}
-                            <div className="card shadow mb-4">
+                            {/* <div className="card shadow mb-4">
                                 <div className="card-header py-3">
                                     <h6 className="m-0 font-weight-bold text-primary">Development Approach</h6>
                                 </div>
@@ -298,22 +304,27 @@ class Layout extends Component {
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
 
-                </div>
+                {/* </div> */}
                 {/* /.container-fluid */}
+            </div>
             </div>
         )
     }
 }
+
 const mapStateToProps = state => {
-    console.log("Inside map state to props state Layout ",state.lineData.lineData)
+    //console.log("Inside map state to props state Layout ",state.lineData.lineData)
       return {
-        linedata : state.lineData.lineData
+        linedata : state.lineData.lineData,
+        pieDataFetched : state.pieData.pieData
       }
   }
 const mapDispatchToProps = {
-    getLineDataaa : getLineData
+   // getLineDataaa : getLineData
+   getPieChartData : getPieData,
+   getLineData : getLineDataa
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Layout);
