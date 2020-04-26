@@ -13,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
             email:'',
             amount:'',
             revenueId : 0,
+            revenueName : 'Select Revenue',
             touched: {
                 startDate: false,
                 email: false,
@@ -40,6 +41,27 @@ import "react-datepicker/dist/react-datepicker.css";
         });
       };
 
+      referralChange = (event) => {
+        if(event == 1){
+            this.setState({
+                revenueId : event,
+                revenueName : 'Direct'
+            })
+        }
+        else if(event == 2){
+            this.setState({
+                revenueId : event,
+                revenueName : 'Referral'
+            })
+        }
+        else if(event == 3){
+            this.setState({
+                revenueId : event,
+                revenueName : 'Social'
+            })
+        }
+      }
+
       handleInputChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
@@ -49,7 +71,21 @@ import "react-datepicker/dist/react-datepicker.css";
         })
     }
     handleSubmit = (event) => {
-
+        if(this.state.revenueId == 0)
+        {
+            this.setState({
+                revenueId : -1
+            })
+        }
+        else{
+            let formValues = {};
+            formValues["userId"] = 1;
+            formValues["revenueId"] = this.state.revenueId;
+            formValues["earningAmount"] = this.state.amount;
+            formValues["timestamp"] = this.state.startDate;
+            this.props.addIncome(formValues);
+        }
+        event.preventDefault();
     }
 
     validate = (email,amount) => {
@@ -84,7 +120,7 @@ import "react-datepicker/dist/react-datepicker.css";
                     <Col xs="8">
                         <fieldset className="border p-2">
                             <legend className="w-auto">Enter Income</legend>
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Group as={Row} controlId="formPlaintextEmail">
                                     <Form.Label column sm="3">
                                         Email
@@ -155,16 +191,21 @@ import "react-datepicker/dist/react-datepicker.css";
                                         <SplitButton
                                             key={"right"}
                                             id={"dropdown-button-drop-right"}
+                                            onSelect = {this.referralChange}
                                             drop={"right"}
                                             variant="Info"
-                                            title={"Select Revenue"}
-                                            style={{float:'left',backgroundColor : '#36b9cc'}} 
+                                            title={this.state.revenueName}
+                                            style={{float:'left',backgroundColor : '#36b9cc'}}
+                                            required 
                                         >
                                             <Dropdown.Item eventKey="1">Direct</Dropdown.Item>
                                             <Dropdown.Item eventKey="2">Referral</Dropdown.Item>
                                             <Dropdown.Item eventKey="3">Social</Dropdown.Item>
                                            
                                         </SplitButton>{' '}
+                                        {this.state.revenueId == -1 &&
+                                            alert("Select revenue")
+                                        }
                                     </Col>
                                 </Form.Group>
                                 <Row>
