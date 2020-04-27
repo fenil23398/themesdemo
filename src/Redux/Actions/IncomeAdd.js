@@ -23,10 +23,11 @@ export function addIncome(incomeObj) {
                 console.log("Inside SuccessFully Added Income",res)
                 dispatch(getPieData())
                 dispatch(getLineDataa())
+                return "Updated SuccessFully"
             }
             )
             .catch(err => {
-                console.log("Error in Adding Income")
+                return "Error Occured";
             })
 
     }

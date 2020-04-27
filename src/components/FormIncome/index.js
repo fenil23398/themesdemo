@@ -83,7 +83,18 @@ import "react-datepicker/dist/react-datepicker.css";
             formValues["revenueId"] = this.state.revenueId;
             formValues["earningAmount"] = this.state.amount;
             formValues["timestamp"] = this.state.startDate;
-            this.props.addIncome(formValues);
+            this.props.addIncome(formValues)
+            .then(res => {
+                console.log("Inserted SuccessFully " ,res);
+                alert("Added SuccessFully");
+            })
+            .catch(err => {
+                console.log("Error In AddinData");
+                alert("Error Occured In Process Try Again Later")
+            })
+            // console.log("Fetched Quey result is  ",res);
+            // if(res === "Updated SuccessFully")
+            //     alert("Updated Successfully ");
         }
         event.preventDefault();
     }
