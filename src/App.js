@@ -50,11 +50,11 @@ class App extends Component {
                 {/* pagwghjsvds d */}
               
                 <Switch>
-                    <Route exact path='https://themesdemo.herokuapp.com/home' component={Layout} />
+                    <Route exact path='/home' component={Layout} />
                     {/* The below Route is to pass Props */}
-                    <Route exact path='https://themesdemo.herokuapp.com/form1' component={()=><FormIncome />} />
-                     <Route path='https://themesdemo.herokuapp.com/notFound' component={NotFound} /> */}
-                    <Redirect to="https://themesdemo.herokuapp.com/home" />
+                    <Route exact path='/form1' component={()=><FormIncome />} />
+                     <Route path='/notFound' component={NotFound} /> */}
+                    <Redirect to="/home" />
                 </Switch>
 
               </div>
