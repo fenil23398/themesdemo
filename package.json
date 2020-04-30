@@ -2,9 +2,9 @@
   "name": "themeintegration",
   "version": "0.1.0",
   "private": true,
-  "engines" : {
-    "npm":"6.4.1",
-    "node" : "8.16.2"
+  "engines": {
+    "npm": "6.4.1",
+    "node": "8.16.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.12.0",

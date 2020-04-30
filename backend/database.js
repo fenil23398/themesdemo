@@ -30,6 +30,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             if (err) {
                 // Table already created
             }else{
+                console.log('Inside the SQLite database.')
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO userData (userName, email, password) VALUES (?,?,?)'
                 db.run(insert, ["admin","admin@example.com",md5("admin123456")])
@@ -37,6 +38,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 db.run(insert, ["abc","abc@example.com",md5("abc123456")])
                 db.run(insert, ["xyz","xyz@example.com",md5("xyz123456")])
                 db.run(insert, ["sneha","sneha@example.com",md5("sneha123456")])
+                console.log('Users added in database.')
             }
         });  
         db.run(`CREATE TABLE revenueData (
@@ -82,7 +84,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 db.run(insert, [('2020-01-19 12:00:00'),"200",'1','2'])
                 db.run(insert, [('2020-02-19 12:00:00'),"300",'1','3'])
                 db.run(insert, [('2020-02-19 12:00:00'),"400",'2','2'])
-                db.run(insert, [('2020-02-19 12:00:00'),"500",'2','5'])
+                db.run(insert, [('2020-02-19 12:00:00'),"500",'2','2'])
             }
         });
     }
