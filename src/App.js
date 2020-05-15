@@ -9,6 +9,7 @@ import Footer from './components/Footer/index';
 import Header from './components/Header/index';
 import Sidebar from './components/Sidebar/index';
 import Layout from './components/Layout/index';
+import Charts from './components/Charts/index';
 import FormIncome from './components/FormIncome/index';
 import NotFound from './components/NotFound/index';
 import GenerateLineChart from './components/LineChart/index';
@@ -53,7 +54,8 @@ class App extends Component {
                     <Route exact path='/home' component={Layout} />
                     {/* The below Route is to pass Props */}
                     <Route exact path='/form1' component={()=><FormIncome />} />
-                     <Route path='/notFound' component={NotFound} /> */}
+                     <Route path='/notFound' component={NotFound} /> 
+                     <Route path='/charts' component={Charts} />
                     <Redirect to="/home" />
                 </Switch>
 

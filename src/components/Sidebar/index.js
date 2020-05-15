@@ -113,12 +113,25 @@ export default class Sidebar extends Component {
                     {/* Nav Item - Pages Collapse Menu */}
                   
 
-                    {/* Nav Item - Charts */}
+                    {/* Nav Item - Income */}
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/form1">
                             <i className="fas fa-fw fa-chart-area"></i>
                             <span>Add Income</span></NavLink>
                     </li>
+
+                    {/* Divider */}
+                    <hr className="sidebar-divider" />
+
+                    {/* Nav Item - Charts */}
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/charts">
+                            <i className="fas fa-fw fa-chart-area"></i>
+                            <span>Charts</span></NavLink>
+                    </li>
+
+                    {/* Divider */}
+                    <hr className="sidebar-divider" />
 
                     {/* Nav Item - Tables */}
                     <li className="nav-item">
