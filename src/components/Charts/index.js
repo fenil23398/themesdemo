@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlotLyGraphic from '../PlotLyGraph/index';
+import MultiLine from '../MultiLine/index';
 import DyGraph from '../DyGraph/index';
 
 class Charts extends Component {
@@ -21,7 +22,7 @@ class Charts extends Component {
                     <div className="card shadow">
                             <div className="card-body">
                                 {/* <div className="chart-area"> */}
-                                    <DyGraph />
+                                    <MultiLine />
                                 {/* </div> */}
                             </div>
                         </div>
