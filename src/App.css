@@ -40,3 +40,79 @@
     transform: rotate(360deg);
   }
 }
+
+
+.cardp {
+  padding: inherit;
+}
+
+.c3-chart-arc path {
+  stroke-width: 0;
+}
+
+.iboxChart {
+  padding: 0px;
+  padding-left: 15px;
+  height: 48px;
+  position: relative;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.noBorder {
+  border: 0px;
+  background-color: transparent;
+}
+
+.rightBorder {
+  border-right: 1px solid #cccccc;
+}
+
+.rightPosition {
+  /* float: right; */
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+
+.chartButton {
+  padding: 5px 10px;
+  outline: none;
+}
+
+.chartButton:focus {
+  border-bottom: 1px solid red;
+}
+
+.bottomTitle {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.spiner-example1 {
+  padding-top: 120px;
+  height: 270px;
+}
+
+.c3-axis-x-label {
+  color: red;
+}
+
+.c3-axis-x .tick {
+  font-size: 9px;
+}
+
+@media only screen and (max-width: 500px)  {
+  .rightButtonPanel {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 501px)  {
+  .drpdwn {
+    align-items: center;
+    display: none;
+  }
+}

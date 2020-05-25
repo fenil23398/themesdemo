@@ -66,12 +66,26 @@
 import React from 'react';
 import Chart from 'react-c3-component';
 import 'c3/c3.css';
+// import { CSVLink, CSVDownload } from "react-csv";
+// import { FaFileDownload } from 'react-icons/fa';
+
+
+// or using 3rd party package
+// import json2csv from "json2csv";
+// data = json2csv(arrayOfLiteralObjects);
 
 export default function SimpleLineChart() {
+  // const csvData = [
+  //   ["firstname", "lastname", "email"],
+  //   ["Ahmed", "Tomi", "ah@smthing.co.com"],
+  //   ["Raed", "Labes", "rl@smthing.co.com"],
+  //   ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+  // ];
   return (
+    <div>
+    {/* <div><CSVLink data={csvData}><FaFileDownload style={{color : 'black'}} /></CSVLink></div> */}
     <Chart
       config={{
-
         data: {
           columns: [
             ['data1', 30, 200, 100, 400, 150, 250],
@@ -85,8 +99,9 @@ export default function SimpleLineChart() {
         },
         tooltip: {
           grouped: false // Default true
-      }
+        }
       }}
     />
+    </div>
   )
 }
