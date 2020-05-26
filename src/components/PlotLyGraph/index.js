@@ -1,9 +1,12 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
+import Pdf from "react-to-pdf";
+
 // import { CSVLink, CSVDownload } from "react-csv";
 // import { FaFileDownload } from 'react-icons/fa';
 
 export default class PlotLyGraphic extends React.Component {
+
   state = {
     Data: {
       type: 'scatter',
@@ -106,16 +109,15 @@ export default class PlotLyGraphic extends React.Component {
   }
 
   render () {
-    //         const csvData = [
-    //     ["firstname", "lastname", "email"],
-    //     ["Ahmed", "Tomi", "ah@smthing.co.com"],
-    //     ["Raed", "Labes", "rl@smthing.co.com"],
-    //     ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-    //   ];
+   
+    const ref = React.createRef();
 
     return (
       <div>
-        {/* <div><CSVLink data={csvData}><FaFileDownload style={{color : 'black'}} /></CSVLink></div> */}
+      <Pdf targetRef={ref} filename="SPC-chart.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+      </Pdf>
+        <div ref={ref}>
         <Plot
           data={[
             this.state.Data,
@@ -130,6 +132,7 @@ export default class PlotLyGraphic extends React.Component {
           useResizeHandler={true}
           style={{ width: '100%', height: '100%' }}
         />
+        </div>
       </div>
     )
   }
